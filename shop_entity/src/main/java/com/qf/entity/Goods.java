@@ -18,9 +18,9 @@ public class Goods implements Serializable {
 
     private Integer id;
     private String title;
-    private String info;
+    private String ginfo;
     private Integer gcount;
-    private Integer tid;
+    private Integer tid = 1;
     private Double allprice;
     private Double price;
     private String gimage;

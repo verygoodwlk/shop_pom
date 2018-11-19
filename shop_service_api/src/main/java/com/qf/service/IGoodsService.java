@@ -12,4 +12,6 @@ import java.util.List;
 public interface IGoodsService {
 
     List<Goods> queryAll();
+
+    int saveGoods(Goods goods);
 }

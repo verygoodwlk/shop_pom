@@ -9,3 +9,13 @@ dubbo:
     name: shop_back
   registry:
     address: zookeeper://192.168.226.160:2181
+fdfs:
+  connect-timeout: 60
+  pool:
+    jmx-enabled: false
+  thumb-image:
+    height: 200
+    width: 200
+  tracker-list: 192.168.226.160:22122
+image:
+  path: http://192.168.226.160/
