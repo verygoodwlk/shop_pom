@@ -1,0 +1,22 @@
+server:
+  port: 9090
+spring:
+  datasource:
+    url: jdbc:mysql:///shop
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.mchange.v2.c3p0.ComboPooledDataSource
+
+mybatis:
+  mapper-locations: classpath*:com/qf/shop/dao/mapper/*.xml
+  type-aliases-package: com.qf.entity
+
+dubbo:
+  application:
+    name: server_provider
+  registry:
+    address: zookeeper://192.168.226.160:2181
+  protocol:
+    name: dubbo
+    port: 20880

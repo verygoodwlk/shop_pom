@@ -1,0 +1,11 @@
+server:
+  port: 8080
+spring:
+  thymeleaf:
+    cache: false
+    mode: HTML5
+dubbo:
+  application:
+    name: shop_back
+  registry:
+    address: zookeeper://192.168.226.160:2181
