@@ -4,6 +4,9 @@ spring:
   thymeleaf:
     cache: false
     mode: HTML5
+  servlet:
+    multipart:
+      max-file-size: 10MB
 dubbo:
   application:
     name: shop_back

@@ -12,4 +12,8 @@ import java.util.List;
 public interface IGoodsDao {
 
     List<Goods> queryAll();
+
+    int insert(Goods goods);
+
+    List<Goods> queryNewGoods();
 }

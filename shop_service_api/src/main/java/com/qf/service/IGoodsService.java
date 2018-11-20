@@ -13,5 +13,7 @@ public interface IGoodsService {
 
     List<Goods> queryAll();
 
-    int saveGoods(Goods goods);
+    Goods saveGoods(Goods goods);
+
+    List<Goods> queryNewGoods();
 }

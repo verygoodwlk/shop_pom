@@ -2,8 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qf.shop.dao.IGoodsDao" >
 
+
   <select id="queryAll" resultType="goods">
     select * from goods
+  </select>
+
+
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+    insert into goods value(null, #{title}, #{ginfo}, #{gcount}, #{tid}, #{allprice}, #{price}, #{gimage})
+  </insert>
+
+  <select id="queryNewGoods" resultType="com.qf.entity.Goods">
+    select * from goods order by id desc limit 4
+
   </select>
 
 </mapper>

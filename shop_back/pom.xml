@@ -76,6 +76,11 @@
             <artifactId>fastdfs-client</artifactId>
             <version>1.26.1-RELEASE</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

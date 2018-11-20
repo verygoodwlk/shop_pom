@@ -7,6 +7,9 @@ spring:
     password: root
     driver-class-name: com.mysql.jdbc.Driver
     type: com.mchange.v2.c3p0.ComboPooledDataSource
+  data:
+    solr:
+      host: http://192.168.226.160:8080/solr
 
 mybatis:
   mapper-locations: classpath*:com/qf/shop/dao/mapper/*.xml
