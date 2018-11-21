@@ -64,6 +64,7 @@ public class GoodsController {
 
         //添加商品成功之后，调用搜索工程的接口，同步到索引库中 - httpclient
         HttpClientUtil.sendJson("http://localhost:8082/search/add", new Gson().toJson(goods));
+        HttpClientUtil.sendJson("http://localhost:8083/item/createhtml", new Gson().toJson(goods));
 
         return "redirect:/goods/list";
     }
