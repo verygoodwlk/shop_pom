@@ -2,8 +2,11 @@ package com.qf.shop.shop_search.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.qf.entity.Goods;
+import com.qf.entity.PageSolr;
 import com.qf.service.ISearchService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,12 +23,20 @@ public class SearchController {
     @Reference
     private ISearchService searchService;
 
+    @Value("${image.path}")
+    private String path;
+
     /**
      * 搜索商品列表
      * @return
      */
     @RequestMapping("/list")
-    public String search(String keyword){
+    public String search(String keyword, Model model, PageSolr<Goods> pageSolr){
+//        List<Goods> goods = searchService.queryIndex(keyword);
+        pageSolr = searchService.queryIndexPage(keyword, pageSolr);
+        model.addAttribute("pageSolr", pageSolr);
+        model.addAttribute("path", path);
+        model.addAttribute("keyword", keyword);
         return "searchlist";
     }
 

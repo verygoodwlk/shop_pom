@@ -27,31 +27,31 @@ public class ShopSearchApplicationTests {
      */
     @Test
     public void addIndex() throws IOException, SolrServerException {
-//        //相当于数据库中的一条记录
-//        for(int i = 2; i <= 20; i++) {
-//            SolrInputDocument document = new SolrInputDocument();
-//            document.addField("id", i);
-//            document.addField("gtitle", "美的冰箱" + i);
-//            document.addField("ginfo", "详细的电器的描述" + i);
-//            document.addField("gprice", 199.00 + i);
-//            document.addField("gcount", 100 + i);
-//            document.addField("gimage", "http://www.baidu.com" + i);
-//
-//            solrClient.add(document);
-//        }
-//        solrClient.commit();
+        //相当于数据库中的一条记录
+        for(int i = 2; i <= 20; i++) {
+            SolrInputDocument document = new SolrInputDocument();
+            document.addField("id", i);
+            document.addField("gtitle", "美的冰箱" + i);
+            document.addField("ginfo", "详细的电器的描述" + i);
+            document.addField("gprice", 199.00 + i);
+            document.addField("gcount", 100 + i);
+            document.addField("gimage", "group1/M00/00/00/wKjioFvya8CAK75FAAQGJqISeUs664.jpg");
 
-
-        SolrInputDocument document = new SolrInputDocument();
-        document.addField("id", 2);
-        document.addField("gtitle", "性价比很高的手机");
-        document.addField("ginfo", "详细的华为手机描述");
-        document.addField("gprice", 199.00);
-        document.addField("gcount", 100);
-        document.addField("gimage", "http://www.baidu.com");
-
-        solrClient.add(document);
+            solrClient.add(document);
+        }
         solrClient.commit();
+
+
+//        SolrInputDocument document = new SolrInputDocument();
+//        document.addField("id", 2);
+//        document.addField("gtitle", "性价比很高的手机");
+//        document.addField("ginfo", "详细的华为手机描述");
+//        document.addField("gprice", 199.00);
+//        document.addField("gcount", 100);
+//        document.addField("gimage", "http://www.baidu.com");
+//
+//        solrClient.add(document);
+//        solrClient.commit();
     }
 
     /**
