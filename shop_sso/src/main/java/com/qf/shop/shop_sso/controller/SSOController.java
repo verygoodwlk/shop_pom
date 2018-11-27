@@ -42,6 +42,7 @@ public class SSOController {
 
     /**
      * 登录
+     * http://localhost:8084/sso/login
      * @param username
      * @param password
      * @return
@@ -69,10 +70,11 @@ public class SSOController {
                 //将uuid写入浏览器的cookie中
                 Cookie cookie = new Cookie(Constact.LOGIN_TOKEN_NAME, token);
                 cookie.setMaxAge(60 * 60 * 24 * 7);//设置cookie的有效期
-//                cookie.setDomain();
-//                cookie.setHttpOnly();
-//                cookie.setPath();
-//                cookie.setSecure();
+
+                cookie.setPath("/");//表示cookie的路径范围 -
+//                cookie.setDomain("jd.com");//表示cookie的域名范围 www.jd.com  cart.js.com search.jd.com
+//                cookie.setHttpOnly(true);//如果设置为true，表示cookie不能别浏览器脚本读取，比如js
+//                cookie.setSecure(true);//如果设置为true，该cookie只有在https协议下才能参数，在http协议下不会传输该cookie
 
                 response.addCookie(cookie);
 
@@ -113,6 +115,7 @@ public class SSOController {
             //删除cookie
             Cookie cookie = new Cookie(Constact.LOGIN_TOKEN_NAME, null);
             cookie.setMaxAge(0);
+            cookie.setPath("/");
             response.addCookie(cookie);
         }
 
