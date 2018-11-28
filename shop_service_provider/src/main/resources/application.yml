@@ -10,6 +10,8 @@ spring:
   data:
     solr:
       host: http://192.168.226.160:8080/solr
+  redis:
+    host: 192.168.226.160
 
 mybatis:
   mapper-locations: classpath*:com/qf/shop/dao/mapper/*.xml

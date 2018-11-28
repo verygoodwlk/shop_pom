@@ -16,4 +16,6 @@ public interface IGoodsDao {
     int insert(Goods goods);
 
     List<Goods> queryNewGoods();
+
+    Goods queryById(Integer gid);
 }

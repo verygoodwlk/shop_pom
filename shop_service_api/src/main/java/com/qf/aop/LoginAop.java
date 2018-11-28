@@ -81,7 +81,7 @@ public class LoginAop {
         Object[] args = proceedingJoinPoint.getArgs();
         //获得所有参数列表
         for (int i = 0; i < args.length; i++) {
-            if(args[i].getClass() == User.class){
+            if(args[i] != null && args[i].getClass() == User.class){
                 args[i] = user;
                 break;
             }

@@ -16,5 +16,8 @@
     select * from goods order by id desc limit 4
 
   </select>
+    <select id="queryById" resultType="com.qf.entity.Goods">
+      select * from goods where id = #{gid}
+    </select>
 
 </mapper>

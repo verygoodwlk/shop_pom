@@ -7,4 +7,5 @@ package com.qf.util;
  */
 public interface Constact {
     String LOGIN_TOKEN_NAME = "login_token";
+    String CART_TOKEN_NAME = "cart_token";
 }

@@ -45,6 +45,28 @@
            });
         });
 
+        $(function(){
+           $.ajax({
+               url:"http://localhost:8085/cart/list",
+               dataType:"jsonp"
+           });
+        });
+
+        function getCarts(data){
+            if(data != null){
+                $("#bid").html(data.length);
+                $("#shopcartid").html("<ul>");
+                for(var i = 0; i < data.length; i++){
+                    $("#shopcartid").append("<li>");
+                    $("#shopcartid").append("<img style='width: 60px;' src='http://192.168.226.160/" + data[i].goods.gimage + "'/><br/>")
+                    $("#shopcartid").append("<span>" + data[i].goods.title + "</span>");
+                    $("#shopcartid").append("&nbsp;&nbsp; *<span>" + data[i].gnumber + "</span>");
+                    $("#shopcartid").append("</li>");
+                }
+                $("#shopcartid").append("</ul>")
+            }
+        }
+
     </script>
 
 </head>
@@ -91,14 +113,8 @@
 
                     <li>
                         <div class="topNav_menu">
-                            <a href="#" class="topNavHover">购物车<b>0</b>种商品<i></i></a>
-                            <div class="topNav_menu_bd" style="display:none;">
-                                <!--
-                                <ul>
-                                  <li><a title="已售出的商品" target="_top" href="#">已售出的商品</a></li>
-                                  <li><a title="销售中的商品" target="_top" href="#">销售中的商品</a></li>
-                                </ul>
-                                -->
+                            <a href="http://localhost:8085/cart/showlist" class="topNavHover">购物车<b id="bid">0</b>种商品<i></i></a>
+                            <div class="topNav_menu_bd" style="display:none;" id="shopcartid">
                                 <p>还没有商品，赶快去挑选！</p>
                             </div>
                         </div>
