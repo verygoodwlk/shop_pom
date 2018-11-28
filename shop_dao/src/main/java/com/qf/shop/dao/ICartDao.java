@@ -1,6 +1,7 @@
 package com.qf.shop.dao;
 
 import com.qf.entity.Cart;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,4 +15,8 @@ public interface ICartDao {
     int addCart(Cart cart);
 
     List<Cart> queryCartsByUid(Integer uid);
+
+    List<Cart> queryCartsByIds(@Param("cids") Integer[] cids);
+
+    int deleteCarts(@Param("cids")Integer[] cids);
 }

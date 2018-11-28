@@ -26,4 +26,18 @@
   <select id="queryCartsByUid" resultMap="BaseResultMap">
     select * from shopcart sc join goods g on sc.gid = g.id where sc.uid = #{uid}
   </select>
+  
+  <select id="queryCartsByIds" resultMap="BaseResultMap">
+     select * from shopcart sc join goods g on sc.gid = g.id where sc.id in 
+     <foreach collection="cids" item="cid" open="(" close=")" separator=",">
+        #{cid}
+     </foreach>
+  </select>
+
+  <delete id="deleteCarts">
+    delete from shopcart where id in
+    <foreach collection="cids" item="cid" open="(" close=")" separator=",">
+      #{cid}
+    </foreach>
+  </delete>
 </mapper>
