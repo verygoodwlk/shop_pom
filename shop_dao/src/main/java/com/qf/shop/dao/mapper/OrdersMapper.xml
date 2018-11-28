@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.shop.dao.IOrderDao" >
+
+  <resultMap id="BaseResultMap" type="com.qf.entity.Orders">
+    <id property="id" column="id"/>
+    <result property="orderid" column="orderid"/>
+    <result property="uid" column="uid"/>
+    <result property="person" column="person"/>
+    <result property="address" column="address"/>
+    <result property="phone" column="phone"/>
+    <result property="code" column="code"/>
+    <result property="oprice" column="oprice"/>
+    <result property="status" column="status"/>
+    <result property="ordertime" column="ordertime"/>
+
+    <collection property="detils" ofType="com.qf.entity.OrderDetils">
+      <id property="id" column="odid"/>
+      <result property="oid" column="oid"/>
+      <result property="gid" column="gid"/>
+      <result property="gname" column="gname"/>
+      <result property="gimage" column="gimage"/>
+      <result property="ginfo" column="ginfo"/>
+      <result property="gcount" column="gcount"/>
+      <result property="price" column="price"/>
+    </collection>
+  </resultMap>
+
+
+  <insert id="addOrder" useGeneratedKeys="true" keyProperty="id">
+    insert into orders value(null, #{orderid}, #{uid}, #{person}, #{address}, #{phone}, #{code}, #{oprice}, #{status}, #{ordertime})
+  </insert>
+
+  <insert id="addOrderDetils">
+    insert into orderdetils values
+    <foreach collection="orderdetils" item="detils" separator=",">
+      (null, #{detils.oid}, #{detils.gid}, #{detils.gname}, #{detils.ginfo}, #{detils.price}, #{detils.gcount}, #{detils.gimage})
+    </foreach>
+  </insert>
+
+  <select id="queryByUid" resultMap="BaseResultMap">
+    select *, od.id as odid from orders o join orderdetils od on o.id = od.oid where o.uid = #{uid}
+  </select>
+</mapper>
