@@ -18,4 +18,8 @@ public interface IOrderDao {
     int addOrderDetils(@Param("orderdetils") List<OrderDetils> orderDetils);
 
     List<Orders> queryByUid(Integer uid);
+
+    Orders queryByOrderid(String orderid);
+
+    int updateOrderStatus(@Param("orderid") String orderid, @Param("status") int status);
 }

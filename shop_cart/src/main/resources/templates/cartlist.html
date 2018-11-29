@@ -12,6 +12,16 @@
     <script type="text/javascript" src="js/topNav.js" ></script>
     <script type="text/javascript" src="js/jquery.goodnums.js" ></script>
     <script type="text/javascript" src="js/shop_gouwuche.js" ></script>
+
+    <script>
+        $(function(){
+            // location.reload();
+            var eles = $("input[type='checkbox']:checked");
+            for(var i = 0; i < eles.length(); i++){
+                eles[i].checked = false;
+            }
+        })
+    </script>
 </head>
 <body>
 <!-- Header  -wll-2013/03/24 -->

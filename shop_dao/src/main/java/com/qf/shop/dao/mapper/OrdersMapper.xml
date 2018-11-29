@@ -38,7 +38,17 @@
     </foreach>
   </insert>
 
+
   <select id="queryByUid" resultMap="BaseResultMap">
     select *, od.id as odid from orders o join orderdetils od on o.id = od.oid where o.uid = #{uid}
   </select>
+    <select id="queryByOrderid" resultType="com.qf.entity.Orders">
+      select * from orders where orderid = #{orderid}
+    </select>
+
+
+
+  <update id="updateOrderStatus">
+    update orders set status = #{status} where orderid = #{orderid}
+  </update>
 </mapper>

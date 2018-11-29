@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script th:inline="javascript">
+        window.onload = function(){
+            //打开新的页签，进行支付
+            window.open("/pay/alipay?orderid=" + [[${orderid}]], "_blank");
+        }
+
+        function isPay(ele){
+            location.href = "/pay/ispay?orderid=" + ele.id;
+        }
+    </script>
+</head>
+<body>
+    <button onclick="javascript:isPay(this);" th:id="${orderid}">支付成功</button>
+    <button>支付遇到问题？</button>
+</body>
+</html>

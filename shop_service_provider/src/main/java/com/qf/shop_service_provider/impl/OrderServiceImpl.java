@@ -41,7 +41,7 @@ public class OrderServiceImpl implements IOrderService {
      */
     @Override
     @Transactional
-    public int addOrder(Integer aid, Integer[] cids, User user) {
+    public String addOrder(Integer aid, Integer[] cids, User user) {
 
         //根据地址的id查询地址的信息
         Address address = addressDao.queryById(aid);
@@ -89,11 +89,21 @@ public class OrderServiceImpl implements IOrderService {
         //删除购物车
         cartDao.deleteCarts(cids);
 
-        return 1;
+        return orders.getOrderid();
     }
 
     @Override
     public List<Orders> queryOrdersByUid(Integer uid) {
         return orderDao.queryByUid(uid);
+    }
+
+    @Override
+    public Orders queryByOrderid(String orderid) {
+        return orderDao.queryByOrderid(orderid);
+    }
+
+    @Override
+    public int updateOrderStatus(String orderid, int status) {
+        return orderDao.updateOrderStatus(orderid, status);
     }
 }

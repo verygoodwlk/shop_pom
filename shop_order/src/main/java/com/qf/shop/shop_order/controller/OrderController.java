@@ -99,9 +99,9 @@ public class OrderController {
     @RequestMapping("/addorder")
     @IsLogin
     @ResponseBody
-    public Integer addOrder(Integer aid, Integer[] cids, User user){
-        int result = orderService.addOrder(aid, cids, user);
-        return result;
+    public String addOrder(Integer aid, Integer[] cids, User user){
+        String orderid = orderService.addOrder(aid, cids, user);
+        return orderid;
     }
 
     /**

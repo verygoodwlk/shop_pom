@@ -541,7 +541,7 @@
 
                 <tr th:each="order : ${orders}">
                     <td colspan="5">
-                        <table class="good">
+                        <table class="good" >
                             <thead>
                             <tr>
                                 <th colspan="6">
@@ -561,7 +561,7 @@
                                     ￥<strong th:text="${order.oprice}">25.00</strong><br/>(免运费)
                                 </td>
                                 <td class="digndan_caozuo" th:switch="${order.status}" th:if="${orderdetilStatus.first}" th:rowspan="${#arrays.length(order.detils)}">
-                                    <a th:case="0"><font color="red">未付款</font><br/><br/><button>去付款</button></a>
+                                    <a th:case="0"><font color="red">未付款</font><br/><br/><button onclick="goPay(this);" th:id="${order.orderid}">去付款</button></a>
                                     <a th:case="1"><font color="green">已付款</font></a>
                                     <a th:case="2"><font color="green">已收货</font><br/><br/><button>去评价</button></a>
                                     <a th:case="3"><font color="green">已评价</font></a>
@@ -578,6 +578,12 @@
         </div>
     </div>
     <!-- 右边购物列表 End -->
+
+    <script>
+        function goPay(ele){
+            location.href = "/pay/topay?orderid=" + ele.id;
+        }
+    </script>
 
 </div>
 <!-- 我的个人中心 End -->
