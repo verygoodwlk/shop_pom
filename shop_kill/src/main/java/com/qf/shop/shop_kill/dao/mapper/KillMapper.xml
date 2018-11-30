@@ -1,23 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qf.shop.shop_kill.dao.IKillDao" >
-  <insert id="saveOrders" useGeneratedKeys="true" keyProperty="id">
-    insert into orders value(null, #{orderid}, #{uid}, #{person}, #{address}, #{phone}, #{code}, #{oprice}, #{status}, #{ordertime})
-  </insert>
+      <insert id="saveOrders" useGeneratedKeys="true" keyProperty="id">
+        insert into orders value(null, #{orderid}, #{uid}, #{person}, #{address}, #{phone}, #{code}, #{oprice}, #{status}, #{ordertime})
+      </insert>
+    
+      <insert id="saveOrdersList">
+          insert into orders values 
+          <foreach collection="orderslist" item="orders" separator=",">
+            (null, #{orders.orderid}, #{orders.uid}, #{orders.person}, #{orders.address}, #{orders.phone}, #{orders.code}, #{orders.oprice}, #{orders.status}, #{orders.ordertime})
+          </foreach>
+      </insert>
 
 
-  <select id="queryKillInfo" resultType="com.qf.entity.Kill">
-    select * from miaosha where id = #{id}
-  </select>
+      <select id="queryKillInfo" resultType="com.qf.entity.Kill">
+        select * from miaosha where id = #{id}
+      </select>
 
-  <update id="updateKillSave">
-    update miaosha set save = save - #{number} where id = #{id}
-  </update>
+      <update id="updateKillSave">
+        update miaosha set save = save - #{number} where id = #{id}
+      </update>
 
-  <update id="updateKillSaveLG">
-     update miaosha
-        set save = save - #{number}, version = version + 1
-        where id = #{id} and version = #{version}
-  </update>
+      <update id="updateKillSaveLG">
+         update miaosha
+            set save = save - #{number}, version = version + 1
+            where id = #{id} and version = #{version}
+      </update>
+
+      <update id="updateKillSaveLG2">
+          update miaosha
+            set save = save - #{number}
+            where id = #{id} and save >= ${number}
+      </update>
+      <update id="updateKill">
+         update miaosha set save = #{save} where id = #{id}
+      </update>
 
 </mapper>

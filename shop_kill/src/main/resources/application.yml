@@ -9,6 +9,8 @@ spring:
     type: com.mchange.v2.c3p0.ComboPooledDataSource
   thymeleaf:
     cache: false
+  redis:
+    host: 192.168.226.160
 
 mybatis:
   mapper-locations: classpath*:com/qf/shop/shop_kill/dao/mapper/*.xml

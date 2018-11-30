@@ -30,25 +30,25 @@ public class KillServiceImpl implements IKillService {
     @Override
     @Transactional
     public synchronized int kill(Integer id, Integer number, Integer uid) {
-//        //根据商品id查询商品库存
-//        Kill kill = killDao.queryKillInfo(id);
-//        //判断库存
-//        if(kill.getSave() >= number){
-//
-//            //可以抢购 - 扣减库存
-//            killDao.updateKillSave(id, number);
-//
-//            //生成订单
-//            Orders orders = new Orders();
-//            orders.setOrderid(UUID.randomUUID().toString());
-//            orders.setUid(uid);
-//            orders.setOrdertime(new Date());
-//
-//            //保存订单
-//            killDao.saveOrders(orders);
-//
-//            return 1;
-//        }
+        //根据商品id查询商品库存
+        Kill kill = killDao.queryKillInfo(id);
+        //判断库存
+        if(kill.getSave() >= number){
+
+            //可以抢购 - 扣减库存
+            killDao.updateKillSave(id, number);
+
+            //生成订单
+            Orders orders = new Orders();
+            orders.setOrderid(UUID.randomUUID().toString());
+            orders.setUid(uid);
+            orders.setOrdertime(new Date());
+
+            //保存订单
+            killDao.saveOrders(orders);
+
+            return 1;
+        }
 
         return 0;
     }
